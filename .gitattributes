@@ -1,0 +1,191 @@
+## GITATTRIBUTES FOR WEB PROJECTS
+#
+# These settings are for any web project.
+#
+# Details per file setting:
+#   text    These files should be normalized (i.e. convert CRLF to LF).
+#   binary  These files are binary and should be left untouched.
+#
+# Note that binary is a macro for -text -diff.
+######################################################################
+
+## AUTO-DETECT
+##   Handle line endings automatically for files detected as
+##   text and leave all files detected as binary untouched.
+##   This will handle all files NOT defined below.
+* text=auto
+
+## SOURCE CODE
+*.bat      text eol=crlf
+*.coffee   text
+*.css      text
+*.htm      text
+*.html     text
+*.inc      text
+*.ini      text
+*.js       text
+*.json     text
+*.jsx      text
+*.less     text
+*.od       text
+*.onlydata text
+*.php      text
+*.pl       text
+*.py       text
+*.rb       text
+*.sass     text
+*.scm      text
+*.scss     text
+*.sh       text eol=lf
+*.sql      text
+*.styl     text
+*.tag      text
+*.ts       text
+*.tsx      text
+*.xml      text
+*.xhtml    text
+
+## DOCKER
+*.dockerignore    text
+Dockerfile    text
+
+## DOCUMENTATION
+*.markdown   text
+*.md         text
+*.mdwn       text
+*.mdown      text
+*.mkd        text
+*.mkdn       text
+*.mdtxt      text
+*.mdtext     text
+*.txt        text
+AUTHORS      text
+CHANGELOG    text
+CHANGES      text
+CONTRIBUTING text
+COPYING      text
+copyright    text
+*COPYRIGHT*  text
+INSTALL      text
+license      text
+LICENSE      text
+NEWS         text
+readme       text
+*README*     text
+TODO         text
+
+## TEMPLATES
+*.dot        text
+*.ejs        text
+*.haml       text
+*.handlebars text
+*.hbs        text
+*.hbt        text
+*.jade       text
+*.latte      text
+*.mustache   text
+*.njk        text
+*.phtml      text
+*.tmpl       text
+*.tpl        text
+*.twig       text
+
+## LINTERS
+.csslintrc    text
+.eslintrc     text
+.htmlhintrc   text
+.jscsrc       text
+.jshintrc     text
+.jshintignore text
+.stylelintrc  text
+
+## CONFIGS
+*.bowerrc      text
+*.cnf          text
+*.conf         text
+*.config       text
+.browserslistrc    text
+.editorconfig  text
+.gitattributes text
+.gitconfig     text
+.htaccess      text
+*.npmignore    text
+*.yaml         text
+*.yml          text
+browserslist   text
+Makefile       text
+makefile       text
+
+## HEROKU
+Procfile    text
+.slugignore text
+
+## GRAPHICS
+*.ai   binary filter=lfs diff=lfs merge=lfs
+*.bmp  binary filter=lfs diff=lfs merge=lfs
+*.eps  binary filter=lfs diff=lfs merge=lfs
+*.gif  binary filter=lfs diff=lfs merge=lfs
+*.ico  binary filter=lfs diff=lfs merge=lfs
+*.jng  binary filter=lfs diff=lfs merge=lfs
+*.jp2  binary filter=lfs diff=lfs merge=lfs
+*.jpg  binary filter=lfs diff=lfs merge=lfs
+*.jpeg binary filter=lfs diff=lfs merge=lfs
+*.jpx  binary filter=lfs diff=lfs merge=lfs
+*.jxr  binary filter=lfs diff=lfs merge=lfs
+*.pdf  binary filter=lfs diff=lfs merge=lfs
+*.png  binary filter=lfs diff=lfs merge=lfs
+*.psb  binary filter=lfs diff=lfs merge=lfs
+*.psd  binary filter=lfs diff=lfs merge=lfs
+*.svg  text
+*.svgz binary filter=lfs diff=lfs merge=lfs
+*.tif  binary filter=lfs diff=lfs merge=lfs
+*.tiff binary filter=lfs diff=lfs merge=lfs
+*.wbmp binary filter=lfs diff=lfs merge=lfs
+*.webp binary filter=lfs diff=lfs merge=lfs
+
+## AUDIO
+*.kar  binary filter=lfs diff=lfs merge=lfs
+*.m4a  binary filter=lfs diff=lfs merge=lfs
+*.mid  binary filter=lfs diff=lfs merge=lfs
+*.midi binary filter=lfs diff=lfs merge=lfs
+*.mp3  binary filter=lfs diff=lfs merge=lfs
+*.ogg  binary filter=lfs diff=lfs merge=lfs
+*.ra   binary filter=lfs diff=lfs merge=lfs
+
+## VIDEO
+*.3gpp binary filter=lfs diff=lfs merge=lfs
+*.3gp  binary filter=lfs diff=lfs merge=lfs
+*.as   binary filter=lfs diff=lfs merge=lfs
+*.asf  binary filter=lfs diff=lfs merge=lfs
+*.asx  binary filter=lfs diff=lfs merge=lfs
+*.fla  binary filter=lfs diff=lfs merge=lfs
+*.flv  binary filter=lfs diff=lfs merge=lfs
+*.m4v  binary filter=lfs diff=lfs merge=lfs
+*.mng  binary filter=lfs diff=lfs merge=lfs
+*.mov  binary filter=lfs diff=lfs merge=lfs
+*.mp4  binary filter=lfs diff=lfs merge=lfs
+*.mpeg binary filter=lfs diff=lfs merge=lfs
+*.mpg  binary filter=lfs diff=lfs merge=lfs
+*.ogv  binary filter=lfs diff=lfs merge=lfs
+*.swc  binary filter=lfs diff=lfs merge=lfs
+*.swf  binary filter=lfs diff=lfs merge=lfs
+*.webm binary filter=lfs diff=lfs merge=lfs
+
+## ARCHIVES
+*.7z  binary filter=lfs diff=lfs merge=lfs
+*.gz  binary filter=lfs diff=lfs merge=lfs
+*.jar binary filter=lfs diff=lfs merge=lfs
+*.rar binary filter=lfs diff=lfs merge=lfs
+*.tar binary filter=lfs diff=lfs merge=lfs
+*.zip binary filter=lfs diff=lfs merge=lfs
+
+## FONTS
+*.ttf   binary filter=lfs diff=lfs merge=lfs
+*.eot   binary filter=lfs diff=lfs merge=lfs
+*.otf   binary filter=lfs diff=lfs merge=lfs
+*.woff  binary filter=lfs diff=lfs merge=lfs
+*.woff2 binary filter=lfs diff=lfs merge=lfs
+
+## EXECUTABLES
+*.exe binary filter=lfs diff=lfs merge=lfs
+*.pyc binary filter=lfs diff=lfs merge=lfs

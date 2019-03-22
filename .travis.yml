@@ -1,0 +1,66 @@
+dist: xenial
+
+language: node_js
+node_js:
+  - 8.10.0
+
+git:
+  depth: 10 # Ensure commit queues are successful
+  quiet: true
+
+env:
+  global:
+    - PATH=$HOME/.local/bin:$PATH
+
+cache:
+  directories:
+    - node_modules
+    - dist
+
+stages:
+  - install
+  - predeploy
+  - archive
+  - deploy
+  - postdeploy
+
+jobs:
+  include:
+    # Install
+    - stage: install
+      name: Install Npm Dependencies
+      script: npm install --unsafe-perm
+    # Predeploy
+    - stage: predeploy
+      name: Lint (Validate Rules Against Prettier)
+      script: npm run lint-check-rules
+    - name: Lint
+      script: npm run lint
+    - name: Test (Unit & Snapshot)
+      script: npm run test:unit
+    - name: Build
+      script: npm run build
+    # Archive
+    - stage: archive
+      name: Archive
+      script: bash ./bin/archive-branch-build-artifacts.sh
+    # Deploy
+    - stage: deploy
+      name: Deploy
+      script: travis_wait 120 bash ./bin/deploy-branch.sh
+
+before_install:
+  - pip install --user awscli
+
+install:
+  -  # Skip
+
+before_script:
+  - export BRANCH="$TRAVIS_BRANCH"
+  - export COMMIT="$TRAVIS_COMMIT"
+  - export ENVIRONMENT="$(echo $BRANCH | sed 's/^master$/production/; s/^develop$/integration/; s/^release.*$/staging/; /^production\|integration\|staging$/! s/^.*$/development/')"
+  - export BRANCH_SHORT="$(echo $BRANCH | sed 's/^\(master\|develop\|release\/[[:digit:]]\+\|feature\/[[:digit:]]\+\).*$/\1/')"
+  - export BRANCH_SLUG="$(echo $BRANCH_SHORT | sed 's/\//-/g')"
+  - ([ "$BRANCH" == "master" ]) && export IS_MASTER_BRANCH=true || export IS_MASTER_BRANCH=false
+  - $IS_MASTER_BRANCH && export IS_NOT_MASTER_BRANCH=false || export IS_NOT_MASTER_BRANCH=true
+  - $IS_MASTER_BRANCH && export SUBDOMAIN="www" || export SUBDOMAIN="www-$BRANCH_SLUG"
