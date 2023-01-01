@@ -2,6 +2,6 @@
   "devDependencies": {
     "friendly-errors-webpack-plugin": "^1.7.0",
     "terser-webpack-plugin": "^1.2.2",
-    "webpack": "^4.28.4"
+    "webpack": "^5.75.0"
   }
 }
